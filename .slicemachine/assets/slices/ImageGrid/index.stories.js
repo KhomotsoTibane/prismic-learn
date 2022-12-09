@@ -1,0 +1,9 @@
+import MyComponent from '../../../../slices/ImageGrid';
+
+export default {
+  title: 'slices/ImageGrid'
+}
+
+
+export const _Default = () => <MyComponent slice={{"variation":"default","version":"sktwi1xtmkfgx8626","items":[{"image":{"dimensions":{"width":900,"height":500},"alt":null,"copyright":null,"url":"https://images.unsplash.com/photo-1545239351-1141bd82e8a6"}}],"primary":{"title":[{"type":"heading1","text":"Thousand","spans":[]}],"description":[{"type":"paragraph","text":"Magna occaecat tempor consectetur et. Culpa esse consequat quis in ex reprehenderit exercitation laboris elit incididunt sit.","spans":[]}]},"slice_type":"image_grid","id":"_Default"}} />
+_Default.storyName = ''
