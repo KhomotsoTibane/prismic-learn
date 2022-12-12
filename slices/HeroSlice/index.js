@@ -1,5 +1,8 @@
-import React from 'react'
-import { PrismicImage, PrismicRichText } from '@prismicio/react'
+import React from "react";
+import { PrismicImage, PrismicLink, PrismicRichText } from "@prismicio/react";
+import RichText from "../../components/RichText";
+import CustomLink from "../../components/CustomLink";
+import { PrismicNextImage } from "@prismicio/next";
 
 /**
  * @typedef {import("@prismicio/client").Content.HeroSliceSlice} HeroSliceSlice
@@ -7,45 +10,29 @@ import { PrismicImage, PrismicRichText } from '@prismicio/react'
  * @param { HeroSliceProps }
  */
 
-
 //<pre>{JSON.stringify(slice,null,2)}</pre>  show what fields are there, explore slice
 
-
 const HeroSlice = ({ slice }) => (
-  <section className="section">
-    <div className="container">
-      <PrismicRichText field={slice.primary.title}/>
-      <PrismicRichText field = {slice.primary.description}/>
-      <PrismicImage field = {slice.primary.image}/>
+  <section className='section relative bg-black'>
+    <div className='absolute inset-0'>
+      <PrismicNextImage field={slice?.primary?.image} fill objectFit='cover' />
+      <div className='absolute inset-0 bg-black bg-opacity-75  mix-blend-multiply' />
+    </div>
+    <div className='container relative py-48'>
+      <RichText field={slice.primary.title} className='text-2xl text-white font-bold' />
+      <RichText field={slice.primary.description} className='text-white' />
+      <div>
+        {slice?.items?.map((item, i) => (
+          <CustomLink
+            key={i}
+            text={item.cta_text}
+            link={item.cta_link}
+            className='mt-4 inline-flex rounded-full bg-white px-5 py-2 text-sm font-medium uppercase'
+          />
+        ))}
+      </div>
     </div>
   </section>
-)
+);
 
-export default HeroSlice
-
-
-
-{/* <section>
-    <span className="title">
-      {
-        slice.primary.title ?
-        <PrismicRichText field={slice.primary.title}/>
-        : <h2>Template slice, update me!</h2>
-      }
-    </span>
-    {
-      slice.primary.description ?
-      <PrismicRichText field={slice.primary.description}/>
-      : <p>start by editing this slice from inside Slice Machine!</p>
-    }
-    <style jsx>{`
-        section {
-          max-width: 600px;
-          margin: 4em auto;
-          text-align: center;
-        }
-        .title {
-          color: #8592e0;
-        }
-    `}</style>
-  </section> */}
+export default HeroSlice;
